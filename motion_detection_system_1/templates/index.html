@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motion Sensor System</title>
+</head>
+<body>
+    <div>
+  
+  <a href="{{ url_for('index') }}">Home</a>
+  {% if current_user.is_anonymous %}
+  <a href="{{ url_for('login') }}">Login</a>
+  <a href="{{ url_for('register') }}">register</a>
+  {% else %}
+  <p>Welcome {{current_user.username}}</p>
+  <a href="{{ url_for('logout') }}">Logout</a>
+  {% endif %}
+  
+</div>
+    <div class="container">
+<div class="row">
+<div class="col-lg-8  offset-lg-2">
+<h2 class="mt-5">MOTION DETECTION SYSTEM</h2>
+
+
+<form method="post" action="{{ url_for('tasks') }}">
+<input type="submit" value="Detect" name="object" />
+<input type="submit" value="Stop" name="stop">
+<input type="submit" value="Start" name="start">
+<input type="submit" value="No_Detect" name="nodetect">
+
+</form>
+<img src="{{ url_for('video_feed') }}" height="80%">
+<h3 style="font-family:courier;">Instructions:</h3>
+<ol style="font-family:courier;">
+<li>Detect- To begin and end detection process</li>	
+</div>
+</div>
+</div>
+</body>
+</html>
